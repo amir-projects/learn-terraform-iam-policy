@@ -1,7 +1,9 @@
 terraform {
   cloud {
+    organization = "bjitinc"
+    hostname = "app.terraform.io"
     workspaces {
-      name = "learn-terraform-aws-iam-policy"
+      name = "learn-terraform-iam-policy"
     }
   }
 
@@ -11,5 +13,5 @@ terraform {
       version = "4.15.0"
     }
   }
-  required_version = "~> 1.3.6"
+  required_version = "~> 1.3.4"
 }
