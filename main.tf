@@ -14,20 +14,12 @@ resource "random_pet" "pet_name" {
   separator = "-"
 }
 
-resource "aws_iam_user" "new_user" {
-  name = "new_user"
+resource "aws_iam_user" "sysadmin" {
+  name = "System Administrator"
 }
 
 resource "aws_s3_bucket" "bucket" {
   bucket = "${random_pet.pet_name.id}-bucket"
-  server_side_encryption_configuration = {
-    rule = {
-      apply_server_side_encryption_by_default = {
-        sse_algorithm = "AES256"
-      }
-    }
-  }
-
   tags = {
     Name        = "My bucket"
     Environment = "Dev"
@@ -62,6 +54,6 @@ data "aws_iam_policy_document" "example" {
 }
 
 resource "aws_iam_user_policy_attachment" "attachment" {
-  user       = aws_iam_user.new_user.name
+  user       = aws_iam_user.sysadmin.name
   policy_arn = aws_iam_policy.policy.arn
 }
