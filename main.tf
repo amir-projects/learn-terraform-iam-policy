@@ -32,7 +32,14 @@ resource "aws_s3_bucket_acl" "bucket" {
 
   acl = "private"
 }
-
+server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
+        
+   }
+ }
+}
 resource "aws_iam_policy" "policy" {
   name        = "${random_pet.pet_name.id}-policy"
   description = "My test policy"
