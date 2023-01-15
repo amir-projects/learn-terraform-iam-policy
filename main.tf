@@ -14,8 +14,8 @@ resource "random_pet" "pet_name" {
   separator = "-"
 }
 
-resource "aws_iam_user" "sysadmin" {
-  name = "System Administrator"
+resource "aws_iam_user" "new_user" {
+  name = "new_user"
 }
 
 resource "aws_s3_bucket" "bucket" {
@@ -54,6 +54,6 @@ data "aws_iam_policy_document" "example" {
 }
 
 resource "aws_iam_user_policy_attachment" "attachment" {
-  user       = aws_iam_user.sysadmin.name
+  user       = aws_iam_user.new_user.name
   policy_arn = aws_iam_policy.policy.arn
 }
